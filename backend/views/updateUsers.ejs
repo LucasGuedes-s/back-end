@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+</head>
+<body>
+    <h1> Bem vindo ao <%=title%></h1>
+    <form>
+        <fieldset>
+            <legend> Digite o CPF ou nome do Usuario para pesquisar</legend>
+            <label for="idUser">CPF:</label>
+            <input type="text" name="cpfUser" id="cpfUser">
+            <p> Ou:</p>
+            <label for="nameUser">NOME:</label>
+            <input type="text" name="nameUser" id="nameUser">
+            <br>
+            <br>
+            <input type="button" value="Pesquisar" onclick="pesquisarUsuario()">
+        </fieldset>
+
+    </form>
+    <form action="/users/updateuser" method="post">
+        <fieldset>
+            <legend> <%=title%></legend> 
+            
+            <div>
+            <label for id="cpf">CPF:</label>
+            <input type="text" name="cpf" id="cpf" placeholder="Ex 129.225.964-89" required>
+            </div>
+
+            <div>
+            <label for id="nome">Digite seu nome:</label>
+            <input type="text" name="nome" id="nome" placeholder="Ex Samuel" required>
+            </div>
+
+            <div>
+            <label for id="idade">Digite a sua idade:</label>
+            <input type="text" name="idade" id="idade" placeholder="Ex 19" required>
+            </div>
+
+            <div>
+            <label for id="endereco">Digite o seu endereço:</label>
+            <input type="text" name=" endereco" id="endereco" placeholder="Ex rua laurentino maia" required>
+            </div>
+
+            <button type="submit"> Cadrastrar Usuarios</button>
+            
+        </fieldset>
+</form>
+<script src="/javascripts/updateuser.js">
+</script>
+</body>
+</html>

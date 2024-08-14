@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bem-vindo à página dos usuários:</h1>
+    <h3>Total de usuários cadastrados: <%= users.length %></h3>
+    <% if (!users || users.length === 0) { %>
+        <h3>Nenhum usuário cadastrado</h3>
+    <% } else { %>
+        <% users.forEach(function(usuario) { %>
+            <p>
+                <strong>NOME:</strong> <%= usuario.nome%> 
+                <strong>IDADE:</strong> <%= usuario.idade%>
+                <strong>CPF:</strong> <%= usuario.CPF%>
+                <strong>ENDEREÇO:</strong> <%= usuario.endereco%>
+            </p>
+        <% }); %>
+    <% } %>
+
+    <style>
+        /* Estilo Global */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Estilo do Contêiner Principal */
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #444;
+        }
+
+        h3 {
+            text-align: center;
+            color: #555;
+        }
+
+        /* Estilo dos Parágrafos de Usuário */
+        p {
+            max-width: 800px;
+            margin: 15px auto;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        strong {
+            color: #444;
+        }
+
+        /* Estilo do Conteúdo Vazio */
+        h3 + h3 {
+            color: #777;
+        }
+
+        /* Estilo Responsivo */
+        @media (max-width: 600px) {
+            p {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            h1, h3 {
+                font-size: 18px;
+            }
+        }
+
+    </style>
+</body>
+</html>
+
