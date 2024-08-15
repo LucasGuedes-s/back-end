@@ -25,15 +25,35 @@ router.get('/new', function(req, res){
 })
 
 router.get('/atualizar', function(req,res){
-res.render('updateUsers', {title:'Atualizar Cadrastro dos Usuarios'})
+  res.render('updateUsers', {title:'Atualizar Cadrastro dos Usuarios'})
 })
 
+router.post('/updateuser', function(req,res){
+  console.log("Cheguei aqui")
+  const {cpf} = req.body
+  if (cpf != ''){
+    mysql.buscarUsuarioCPF(cpf).then((result) =>{
+      console.log(result)
+      if(result.length>0){
+        res.render('alterarUsuario', { result: result })
+      }
+  else{
+    res.send("Nenhum usuário encontrado")
+  }
+    }).catch((error) =>{
+      console.error('Erro na consulta', error)
+      res.render("Ocorreu um erro no processamento dos dados")
+    })
+  }
+})
+  
+
 router.post('/newuser', function(req, res){
-  const {nome,cpf, idade, endereco} = req.body
+  const {nome,cpf,idade,endereco} = req.body
   console.log(req.body)
 
   let cadrastro =  mysql.insertUser(cpf, nome, idade, endereco)
-
+  console.log(cadrastro)
   if (cadrastro){
     //res.status(200).send('Efetuado com Sucesso')
     res.send("Efetuado com Sucesso, Redirecionado para a pagina de confirmação")
